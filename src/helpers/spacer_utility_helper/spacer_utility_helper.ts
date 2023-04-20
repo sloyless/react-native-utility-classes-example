@@ -1,13 +1,5 @@
 import { Falsy, ViewStyle } from "react-native";
-import { Metrics } from "src/theme";
-
-/**
- * A type guard that filters out falsy items
- * @param it Any type
- */
-export function isTruthy<T>(it: T | Falsy): it is T {
-  return Boolean(it);
-}
+import { isTruthy } from "src/type_guards/is_truthy";
 
 export type Spacer =
   | "m-0_5"
