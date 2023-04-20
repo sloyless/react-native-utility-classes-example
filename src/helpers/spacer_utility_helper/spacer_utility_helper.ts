@@ -1,9 +1,13 @@
 import { Falsy, ViewStyle } from "react-native";
-import { isTruthy } from "src/type_guards/is_truthy";
-import {
-  widthPercentageToDP as wp,
-  heightPercentageToDP as hp,
-} from "react-native-responsive-screen";
+import { Metrics } from "src/theme";
+
+/**
+ * A type guard that filters out falsy items
+ * @param it Any type
+ */
+export function isTruthy<T>(it: T | Falsy): it is T {
+  return Boolean(it);
+}
 
 export type Spacer =
   | "m-0_5"
@@ -29,22 +33,23 @@ export type Spacer =
   | "mb-4"
   | "mb-5"
   | "mb-auto"
-  | "ml-0"
-  | "ml-0_5"
-  | "ml-1"
-  | "ml-2"
-  | "ml-3"
-  | "ml-4"
-  | "ml-5"
-  | "ml-auto"
-  | "mr-0"
-  | "mr-0_5"
-  | "mr-1"
-  | "mr-2"
-  | "mr-3"
-  | "mr-4"
-  | "mr-5"
-  | "mr-auto"
+  | "ms-0"
+  | "ms-0_5"
+  | "ms-1"
+  | "ms-2"
+  | "ms-3"
+  | "ms-4"
+  | "ms-5"
+  | "ms-auto"
+  | "me-0"
+  | "me-0_5"
+  | "me-1"
+  | "me-2"
+  | "me-3"
+  | "me-4"
+  | "me-5"
+  | "me-auto"
+  | "mx-auto"
   | "mx-0"
   | "mx-0_5"
   | "mx-1"
@@ -82,22 +87,22 @@ export type Spacer =
   | "pb-4"
   | "pb-5"
   | "pb-auto"
-  | "pl-0"
-  | "pl-0_5"
-  | "pl-1"
-  | "pl-2"
-  | "pl-3"
-  | "pl-4"
-  | "pl-5"
-  | "pl-auto"
-  | "pr-0"
-  | "pr-0_5"
-  | "pr-1"
-  | "pr-2"
-  | "pr-3"
-  | "pr-4"
-  | "pr-5"
-  | "pr-auto"
+  | "ps-0"
+  | "ps-0_5"
+  | "ps-1"
+  | "ps-2"
+  | "ps-3"
+  | "ps-4"
+  | "ps-5"
+  | "ps-auto"
+  | "pe-0"
+  | "pe-0_5"
+  | "pe-1"
+  | "pe-2"
+  | "pe-3"
+  | "pe-4"
+  | "pe-5"
+  | "pe-auto"
   | "px-0"
   | "px-0_5"
   | "px-1"
@@ -137,22 +142,23 @@ const Spacers: Spacer[] = [
   "mb-4",
   "mb-5",
   "mb-auto",
-  "ml-0",
-  "ml-0_5",
-  "ml-1",
-  "ml-2",
-  "ml-3",
-  "ml-4",
-  "ml-5",
-  "ml-auto",
-  "mr-0",
-  "mr-0_5",
-  "mr-1",
-  "mr-2",
-  "mr-3",
-  "mr-4",
-  "mr-5",
-  "mr-auto",
+  "ms-0",
+  "ms-0_5",
+  "ms-1",
+  "ms-2",
+  "ms-3",
+  "ms-4",
+  "ms-5",
+  "ms-auto",
+  "me-0",
+  "me-0_5",
+  "me-1",
+  "me-2",
+  "me-3",
+  "me-4",
+  "me-5",
+  "me-auto",
+  "mx-auto",
   "mx-0",
   "mx-0_5",
   "mx-1",
@@ -190,22 +196,22 @@ const Spacers: Spacer[] = [
   "pb-4",
   "pb-5",
   "pb-auto",
-  "pl-0",
-  "pl-0_5",
-  "pl-1",
-  "pl-2",
-  "pl-3",
-  "pl-4",
-  "pl-5",
-  "pl-auto",
-  "pr-0",
-  "pr-0_5",
-  "pr-1",
-  "pr-2",
-  "pr-3",
-  "pr-4",
-  "pr-5",
-  "pr-auto",
+  "ps-0",
+  "ps-0_5",
+  "ps-1",
+  "ps-2",
+  "ps-3",
+  "ps-4",
+  "ps-5",
+  "ps-auto",
+  "pe-0",
+  "pe-0_5",
+  "pe-1",
+  "pe-2",
+  "pe-3",
+  "pe-4",
+  "pe-5",
+  "pe-auto",
   "px-0",
   "px-0_5",
   "px-1",
@@ -225,28 +231,16 @@ export const SpacerSet = new Set<Spacer>(Spacers);
 
 type Size = "0_5" | "0" | "1" | "2" | "3" | "4" | "5";
 
-type MarginProperty = "m" | "mt" | "mb" | "ml" | "mr" | "mx" | "my";
+type MarginProperty = "m" | "mt" | "mb" | "ms" | "me" | "mx" | "my";
 type MarginViewStyleProperty = Extract<
   keyof ViewStyle,
-  | "margin"
-  | "marginTop"
-  | "marginBottom"
-  | "marginHorizontal"
-  | "marginLeft"
-  | "marginRight"
-  | "marginVertical"
+  "margin" | "marginTop" | "marginBottom" | "marginHorizontal" | "marginLeft" | "marginRight" | "marginVertical"
 >;
 
-type PaddingProperty = "p" | "pt" | "pb" | "pl" | "pr" | "px" | "py";
+type PaddingProperty = "p" | "pt" | "pb" | "ps" | "pe" | "px" | "py";
 type PaddingViewStyleProperty = Extract<
   keyof ViewStyle,
-  | "padding"
-  | "paddingTop"
-  | "paddingBottom"
-  | "paddingHorizontal"
-  | "paddingLeft"
-  | "paddingRight"
-  | "paddingVertical"
+  "padding" | "paddingTop" | "paddingBottom" | "paddingHorizontal" | "paddingLeft" | "paddingRight" | "paddingVertical"
 >;
 
 const marginPropertyMap: Record<
@@ -258,8 +252,8 @@ const marginPropertyMap: Record<
 > = {
   m: { property: "margin", verticalOrHorizontal: "vertical" },
   mb: { property: "marginBottom", verticalOrHorizontal: "vertical" },
-  ml: { property: "marginLeft", verticalOrHorizontal: "horizontal" },
-  mr: { property: "marginRight", verticalOrHorizontal: "horizontal" },
+  ms: { property: "marginLeft", verticalOrHorizontal: "horizontal" },
+  me: { property: "marginRight", verticalOrHorizontal: "horizontal" },
   mt: { property: "marginTop", verticalOrHorizontal: "vertical" },
   mx: { property: "marginHorizontal", verticalOrHorizontal: "horizontal" },
   my: { property: "marginVertical", verticalOrHorizontal: "vertical" },
@@ -274,8 +268,8 @@ const paddingPropertyMap: Record<
 > = {
   p: { property: "padding", verticalOrHorizontal: "vertical" },
   pb: { property: "paddingBottom", verticalOrHorizontal: "vertical" },
-  pl: { property: "paddingLeft", verticalOrHorizontal: "horizontal" },
-  pr: { property: "paddingRight", verticalOrHorizontal: "horizontal" },
+  ps: { property: "paddingLeft", verticalOrHorizontal: "horizontal" },
+  pe: { property: "paddingRight", verticalOrHorizontal: "horizontal" },
   pt: { property: "paddingTop", verticalOrHorizontal: "vertical" },
   px: { property: "paddingHorizontal", verticalOrHorizontal: "horizontal" },
   py: { property: "paddingVertical", verticalOrHorizontal: "vertical" },
