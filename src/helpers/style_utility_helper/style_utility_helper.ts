@@ -14,6 +14,9 @@ type TextUtils =
   | "h1"
   | "h2"
   | "h3"
+  | "h4"
+  | "h5"
+  | "h6"
   | "italic-bold"
   | "italic"
   | "not-italic"
@@ -648,6 +651,24 @@ const utilityNameMap: UtilityNameFlexMap &
   h3: {
     fontSize: theme.typography.sizes.h3,
     lineHeight: 34,
+    fontStyle: "normal",
+    fontWeight: "bold",
+  },
+  h4: {
+    fontSize: theme.typography.sizes.h4,
+    lineHeight: 28,
+    fontStyle: "normal",
+    fontWeight: "bold",
+  },
+  h5: {
+    fontSize: theme.typography.sizes.h5,
+    lineHeight: 22,
+    fontStyle: "normal",
+    fontWeight: "bold",
+  },
+  h6: {
+    fontSize: theme.typography.sizes.h6,
+    lineHeight: 18,
     fontStyle: "normal",
     fontWeight: "bold",
   },
