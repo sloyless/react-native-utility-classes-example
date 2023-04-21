@@ -62,6 +62,9 @@ export const theme: ExampleTheme = {
       h1: 36,
       h2: 32,
       h3: 26,
+      h4: 22,
+      h5: 18,
+      h6: 16,
     },
   },
 };
